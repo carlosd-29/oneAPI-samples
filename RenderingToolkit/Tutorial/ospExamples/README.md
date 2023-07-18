@@ -1,8 +1,7 @@
-ospExamples
+# `Getting Started` CPU Sample for Intel&reg; oneAPI Rendering Toolkit (Render Kit): Intel&reg; OSPRay
 -----------
-
-Apart from tutorials, `OSPRay` comes with a C++ app called
-[`ospExamples`](https://github.com/oneapi-src/oneAPI-samples/tree/development/RenderingToolkit/Tutorial/ospExamples)
+This sample program builds a C++ app called
+[`ospExamples`](https://github.com/oneapi-src/oneAPI-samples/tree/development/RenderingToolkit/Tutorial/ospExamples), 
 which is an elaborate easy-to-use tutorial, with a single interface to
 try various `OSPRay` features. It is aimed at providing users with
 multiple simple scenes composed of basic geometry types, lights, volumes
@@ -15,6 +14,54 @@ necessary to render an interactive scene. The scene is rendered on a
 manipulate the scene at runtime.
 
 The application is refactored from https://github.com/ospray/ospray/tree/master/apps such that it can be compiled and built upon independently of OSPRay engine.
+
+| Area                 | Description
+|:---                  |:---
+| What you will learn  | How to build and run a basic sample program for CPU using the Intel OSPRay API from the Render Kit.
+| Time to complete     | 5 minutes
+
+## Prerequisites
+
+| Minimum Requirements              | Description
+|:---                               |:---
+| OS                                | >Windows* 10 or higher
+| Hardware                          | Intel 64 Penryn or newer with SSE4.1 extensions; ARM64 with NEON extensions <br>(Optimized requirements: Intel 64 Skylake or newer with AVX512 extentions, ARM64 with NEON extensions)
+| Compiler Toolchain                | **Windows\***: MSVS 2019 or higher with Windows* SDK and CMake*; Other platforms: C++11 compiler, a C99 compiler (for example gcc/c++/clang), and CMake*
+| Libraries                         | Install Intel&reg; oneAPI Rendering Toolkit (Render Kit), includes Embree, OSPRay
+
+## Build and Run the `Getting Started` Sample Program
+
+### Set Environment Variables
+
+When working with the command-line interface (CLI), you should configure the oneAPI toolkits using environment variables. Set up your CLI environment by sourcing the `setvars` script every time you open a new terminal window. This practice ensures that your compiler, libraries, and tools are ready for development.
+
+> **Note**: If you have not already done so, set up your CLI
+> environment by sourcing  the `setvars` script in the root of your oneAPI installation.
+>
+> Windows*:
+> - `C:\Program Files (x86)\Intel\oneAPI\setvars.bat`
+> - Windows PowerShell*, use the following command: `cmd.exe "/K" '"C:\Program Files (x86)\Intel\oneAPI\setvars.bat" && powershell'`
+>
+> For more information on configuring environment variables, see *[Use the setvars Script with Windows*](https://www.intel.com/content/www/us/en/develop/documentation/oneapi-programming-guide/top/oneapi-development-environment-setup/use-the-setvars-script-with-windows.html)*.
+
+### On Windows*
+
+1. Open a new **x64 Native Tools Command Prompt for MSVS 2022** (or MSVS 2019). Ensure environment variables are set.
+2. Change to CPU sample program directory:
+```
+cd <path-to-oneAPI-samples>\RenderingToolkit\Tutorial\ospExamples
+```
+3. Build and run the `Getting Started` program:
+```
+mkdir build
+cd build
+cmake ..
+cmake --build .
+cd Debug
+ospExamples.exe
+```
+
+4. Review output (gui).
 
 
 <figure>
@@ -102,54 +149,16 @@ alt="Rendering an evening sky with the renderSunSky option." />
 <code>renderSunSky</code> option.</figcaption>
 </figure>
 
-## Build and Run
 
 ### Additional Notes
 oneAPI Rendering Toolkit 2023.1 version's cmake file contains an errata. The errata will produce an error while building the example. Please apply the following workaround described in the following page. 2023.1.1 version will address the issue.
 
 https://community.intel.com/t5/Intel-oneAPI-Rendering-Toolkit/2023-1-troubleshoot-errata-CMake-Error/m-p/1476040#M98
 
-### Windows
+## License
 
-1. Run a new **x64 Native Tools Command Prompt for MSVS 2019**.
+This code sample is licensed under the Apache 2.0 license. See
+[LICENSE.txt](LICENSE.txt) for details.
 
-```
-call <path-to-oneapi-folder>\setvars.bat
-cd <path-to-oneAPI-samples>\RenderingToolkit\Tutorial\ospExamples
-mkdir build
-cd build
-cmake ..
-cmake --build .
-cd Debug
-ospExamples.exe
-```
-
-
-
-### Linux
-
-1. Start a new Terminal session.
-```
-source <path-to-oneapi-folder>/setvars.sh
-cd <path-to-oneAPI-samples>/RenderingToolkit/Tutorial/ospExamples
-mkdir build
-cd build
-cmake ..
-cmake --build .
-./ospExamples
-```
-
-
-### macOS
-
-1. Start a new Terminal session.
-
-```
-source <path-to-oneapi-folder>/setvars.sh
-cd <path-to-oneAPI-samples>/RenderingToolkit/Tutorial/ospExamples
-mkdir build
-cd build
-cmake ..
-cmake --build .
-./ospExamples
-```
+Third party program Licenses can be found here:
+[third-party-programs.txt](https://github.com/oneapi-src/oneAPI-samples/blob/master/third-party-programs.txt).
